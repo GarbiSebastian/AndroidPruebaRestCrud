@@ -17,10 +17,6 @@ public class Contacto {
     @Expose
     protected String apellido;
 
-    @SerializedName("telefono")
-    @Expose
-    protected String telefono;
-
     @SerializedName("email")
     @Expose
     protected String email;
@@ -29,11 +25,10 @@ public class Contacto {
 
     }
 
-    public Contacto(int id, String nombre, String apellido, String telefono, String email) {
+    public Contacto(int id, String nombre, String apellido, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
         this.email = email;
     }
 
@@ -56,15 +51,6 @@ public class Contacto {
 
     public Contacto setApellido(String apellido) {
         this.apellido = apellido;
-        return this;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public Contacto setTelefono(String telefono) {
-        this.telefono = telefono;
         return this;
     }
 

@@ -36,16 +36,19 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Sebito es groso");
 
         btnAddContacto  = (Button) findViewById(R.id.btnAddContacto);
-        btnGetContactos = (Button) findViewById(R.id.btnGetContactos);
+        //btnGetContactos = (Button) findViewById(R.id.btnGetContactos);
         listView        = (ListView) findViewById(R.id.listView);
         contactoService = ApiUtils.getContactoService();
 
+        /*
         btnGetContactos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getContactos();
             }
         });
+        */
+        getContactos();
 
         btnAddContacto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,ContactoActivity.class);
                 intent.putExtra("contacto_nombre","");
                 intent.putExtra("contacto_apellido","");
-                intent.putExtra("contacto_telefono","");
                 intent.putExtra("contacto_email","");
                 startActivity(intent);
             }

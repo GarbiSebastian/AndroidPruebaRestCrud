@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RestCrud</string>
+    <string name="contacto_form_id">Id</string>
+    <string name="contacto_form_nombre">Nombre</string>
+    <string name="contacto_form_apellido">Apellido</string>
+    <string name="contacto_form_email">Email</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_del">Eliminar</string>
+    <string name="btn_add">Agregar</string>
 </resources>

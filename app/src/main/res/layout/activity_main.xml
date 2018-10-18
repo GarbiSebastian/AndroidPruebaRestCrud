@@ -18,9 +18,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#BA55D3"
-            android:text="Agregar Contacto"
+            android:text="@string/btn_add"
             android:textColor="#ffffff" />
 
+        <!--
         <Button
             android:id="@+id/btnGetContactos"
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
             android:background="#32CD32"
             android:text="Listar Contactos"
             android:textColor="#ffffff" />
+            -->
 
         <ListView
             android:id="@+id/listView"

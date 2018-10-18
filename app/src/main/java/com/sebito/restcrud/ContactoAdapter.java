@@ -34,9 +34,13 @@ public class ContactoAdapter extends ArrayAdapter<Contacto> {
 
         TextView txtContactoId = (TextView) rowView.findViewById(R.id.txtContactoId);
         TextView txtContactoNombre = (TextView) rowView.findViewById(R.id.txtContactoNombre);
+        TextView txtContactoApellido = (TextView) rowView.findViewById(R.id.txtContactoApellido);
+        TextView txtContactoEmail = (TextView) rowView.findViewById(R.id.txtContactoEmail);
 
         txtContactoId.setText(String.format("#ID: %d",contactos.get(position).getId()));
         txtContactoNombre.setText(String.format("Nombre: %s", contactos.get(position).getNombre()));
+        txtContactoApellido.setText(String.format("Apellido: %s", contactos.get(position).getApellido()));
+        txtContactoEmail.setText(String.format("Email: %s", contactos.get(position).getEmail()));
 
 
         rowView.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +50,6 @@ public class ContactoAdapter extends ArrayAdapter<Contacto> {
                 intent.putExtra("contacto_id", String.valueOf(contactos.get(position).getId()));
                 intent.putExtra("contacto_nombre", String.valueOf(contactos.get(position).getNombre()));
                 intent.putExtra("contacto_apellido", String.valueOf(contactos.get(position).getApellido()));
-                intent.putExtra("contacto_telefono", String.valueOf(contactos.get(position).getTelefono()));
                 intent.putExtra("contacto_email", String.valueOf(contactos.get(position).getEmail()));
                 context.startActivity(intent);
             }

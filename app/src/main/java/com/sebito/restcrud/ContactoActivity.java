@@ -22,7 +22,9 @@ import retrofit2.Response;
 public class ContactoActivity extends AppCompatActivity {
     ContactoService contactoService;
     EditText edtUId;
-    EditText edtUsername;
+    EditText edtNombre;
+    EditText edtApellido;
+    EditText edtEmail;
     Button btnSave;
     Button btnDel;
     TextView txtUId;
@@ -36,9 +38,11 @@ public class ContactoActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txtUId      = (TextView)    findViewById(R.id.txtUId);
         edtUId      = (EditText)    findViewById(R.id.edtUId);
-        edtUsername = (EditText)    findViewById(R.id.edtUsername);
+        edtNombre = (EditText)    findViewById(R.id.edtNombre);
+        edtApellido = (EditText)    findViewById(R.id.edtApellido);
+        edtEmail = (EditText)    findViewById(R.id.edtEmail);
+
         btnSave     = (Button)      findViewById(R.id.btnSave);
         btnDel      = (Button)      findViewById(R.id.btnDel);
 
@@ -48,15 +52,15 @@ public class ContactoActivity extends AppCompatActivity {
         final String contactoId = extras.getString("contacto_id");
         String contactoNombre   = extras.getString("contacto_nombre");
         String contactoApellido = extras.getString("contacto_apellido");
-        String contactoTelefono = extras.getString("contacto_telefono");
         String contactoEmail    = extras.getString("contacto_email");
 
         if (contactoId != null && contactoId.trim().length()>0){
             edtUId.setFocusable(false);
             edtUId.setText(contactoId);
-            edtUsername.setText(contactoNombre);
+            edtNombre.setText(contactoNombre);
+            edtApellido.setText(contactoApellido);
+            edtEmail.setText(contactoEmail);
         }else{
-            txtUId.setVisibility(View.INVISIBLE);
             edtUId.setVisibility(View.INVISIBLE);
             btnDel.setVisibility(View.INVISIBLE);
         }
@@ -65,10 +69,9 @@ public class ContactoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Contacto contacto = new Contacto();
-                contacto.setNombre(edtUsername.getText().toString())
-                        .setApellido("SARASA")
-                        .setTelefono("1234556")
-                        .setEmail(edtUsername.getText().toString()+"@sarasa.com");
+                contacto.setNombre(edtNombre.getText().toString())
+                        .setApellido(edtApellido.getText().toString())
+                        .setEmail(edtEmail.getText().toString());
                 if((contactoId != null) && (contactoId.trim().length() > 0)){
                     updateContacto(Integer.parseInt(contactoId),contacto);
                 }else {
@@ -95,6 +98,8 @@ public class ContactoActivity extends AppCompatActivity {
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this,"Contacto creado con éxito", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             }
 
@@ -112,6 +117,8 @@ public class ContactoActivity extends AppCompatActivity {
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this, "Contacto actualizado", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             }
 
@@ -129,6 +136,8 @@ public class ContactoActivity extends AppCompatActivity {
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this,"Contacto eliminado",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             }
 
