@@ -27,7 +27,6 @@ public class ContactoActivity extends AppCompatActivity {
     EditText edtEmail;
     Button btnSave;
     Button btnDel;
-    TextView txtUId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +76,8 @@ public class ContactoActivity extends AppCompatActivity {
                 }else {
                     addContacto(contacto);
                 }
+                Intent intent = new Intent(ContactoActivity.this,ContactoDetalleActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -92,7 +93,7 @@ public class ContactoActivity extends AppCompatActivity {
     }
 
     public void addContacto(Contacto contacto){
-        Call<Contacto> contactoCall = contactoService.addContacto(contacto);
+        Call<Contacto> contactoCall = contactoService.create(contacto);
         contactoCall.enqueue(new Callback<Contacto>() {
             @Override
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
@@ -111,7 +112,7 @@ public class ContactoActivity extends AppCompatActivity {
     }
 
     public void updateContacto(int id, Contacto contacto){
-        Call<Contacto> contactoCall= contactoService.updateContacto(id,contacto);
+        Call<Contacto> contactoCall= contactoService.update(id,contacto);
         contactoCall.enqueue(new Callback<Contacto>() {
             @Override
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
@@ -130,14 +131,12 @@ public class ContactoActivity extends AppCompatActivity {
     }
 
     public void deleteContacto(int id){
-        Call<Contacto> contactoCall = contactoService.deleteContacto(id);
+        Call<Contacto> contactoCall = contactoService.delete(id);
         contactoCall.enqueue(new Callback<Contacto>() {
             @Override
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this,"Contacto eliminado",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
-                    startActivity(intent);
                 }
             }
 

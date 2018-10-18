@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btnGetContactos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getContactos();
+                retrieve();
             }
         });
         */
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getContactos(){
-        Call<List<Contacto>> call= contactoService.getContactos();
+        Call<List<Contacto>> call= contactoService.retrieve();
         call.enqueue(new Callback<List<Contacto>>() {
             @Override
             public void onResponse(Call<List<Contacto>> call, Response<List<Contacto>> response) {

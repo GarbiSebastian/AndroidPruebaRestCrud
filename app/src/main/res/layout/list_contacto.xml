@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="3dp"/>
 
+    <!--
     <TextView
         android:id="@+id/txtContactoNombre"
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="3dp"/>
-
+    -->
     <TextView
         android:id="@+id/txtContactoEmail"
         android:layout_width="match_parent"
