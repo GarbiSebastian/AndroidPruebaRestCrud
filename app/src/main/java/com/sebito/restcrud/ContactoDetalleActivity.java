@@ -38,18 +38,6 @@ public class ContactoDetalleActivity extends AppCompatActivity {
         contactoService = ApiUtils.getContactoService();
         final String contactoId = extras.getString("contacto_id");
         getContacto(Integer.parseInt(contactoId));
-
-        if (contacto==null){
-            Toast.makeText(ContactoDetalleActivity.this,"Erroraso contacto es null",Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(ContactoDetalleActivity.this,"Anduvo",Toast.LENGTH_SHORT).show();
-        }
-        /*
-        valorCampoId.setText(String.valueOf(contacto.getId()));
-        valorCampoNombre.setText(String.valueOf(contacto.getNombre()));
-        valorCampoApellido.setText(String.valueOf(contacto.getApellido()));
-        valorCampoEmail.setText(String.valueOf(contacto.getEmail()));
-        */
     }
 
     private void getContacto(int contactoId) {
@@ -59,6 +47,10 @@ public class ContactoDetalleActivity extends AppCompatActivity {
             public void onResponse(Call<Contacto> call, Response<Contacto> response) {
                 if(response.isSuccessful()){
                     contacto = response.body();
+                    valorCampoId.setText(String.valueOf(contacto.getId()));
+                    valorCampoNombre.setText(String.valueOf(contacto.getNombre()));
+                    valorCampoApellido.setText(String.valueOf(contacto.getApellido()));
+                    valorCampoEmail.setText(String.valueOf(contacto.getEmail()));
                 }
             }
 
