@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sebito.restcrud.listener.ContactoDelOnClickListener;
 import com.sebito.restcrud.model.Contacto;
 import com.sebito.restcrud.remote.ApiUtils;
 import com.sebito.restcrud.remote.ContactoService;
@@ -59,6 +60,9 @@ public class ContactoActivity extends AppCompatActivity {
             edtNombre.setText(contactoNombre);
             edtApellido.setText(contactoApellido);
             edtEmail.setText(contactoEmail);
+            btnDel.setOnClickListener(new ContactoDelOnClickListener()
+                    .setContext(ContactoActivity.this)
+                    .setContactoId(Integer.parseInt(contactoId)));
         }else{
             edtUId.setVisibility(View.INVISIBLE);
             btnDel.setVisibility(View.INVISIBLE);
@@ -76,11 +80,14 @@ public class ContactoActivity extends AppCompatActivity {
                 }else {
                     addContacto(contacto);
                 }
+                /*
                 Intent intent = new Intent(ContactoActivity.this,ContactoDetalleActivity.class);
                 startActivity(intent);
+                */
             }
         });
 
+        /*
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,9 +97,10 @@ public class ContactoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
     }
 
-    public void addContacto(Contacto contacto){
+    public void addContacto(final Contacto contacto){
         Call<Contacto> contactoCall = contactoService.create(contacto);
         contactoCall.enqueue(new Callback<Contacto>() {
             @Override
@@ -100,6 +108,7 @@ public class ContactoActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this,"Contacto creado con éxito", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
+                    intent.putExtra("contacto_id",response.body().getId());
                     startActivity(intent);
                 }
             }
@@ -111,7 +120,7 @@ public class ContactoActivity extends AppCompatActivity {
         });
     }
 
-    public void updateContacto(int id, Contacto contacto){
+    public void updateContacto(int id, final Contacto contacto){
         Call<Contacto> contactoCall= contactoService.update(id,contacto);
         contactoCall.enqueue(new Callback<Contacto>() {
             @Override
@@ -119,6 +128,7 @@ public class ContactoActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     Toast.makeText(ContactoActivity.this, "Contacto actualizado", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ContactoActivity.this,MainActivity.class);
+                    intent.putExtra("contacto_id",contacto.getId());
                     startActivity(intent);
                 }
             }
@@ -130,6 +140,7 @@ public class ContactoActivity extends AppCompatActivity {
         });
     }
 
+    /*
     public void deleteContacto(int id){
         Call<Contacto> contactoCall = contactoService.delete(id);
         contactoCall.enqueue(new Callback<Contacto>() {
@@ -146,6 +157,7 @@ public class ContactoActivity extends AppCompatActivity {
             }
         });
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

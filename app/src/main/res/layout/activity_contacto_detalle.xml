@@ -9,13 +9,16 @@
 
     <TextView
         android:id="@+id/campo_nombre"
-        android:layout_width="wrap_content"
+        android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/contacto_form_nombre"
+        app:layout_constraintBottom_toTopOf="@+id/campo_apellido"
+        app:layout_constraintEnd_toStartOf="@+id/valor_nombre"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor_id" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_id" />
 
     <TextView
         android:id="@+id/valor_nombre"
@@ -24,19 +27,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/valor_apellido"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_nombre" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/campo_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/valor_id" />
 
     <TextView
         android:id="@+id/campo_apellido"
-        android:layout_width="wrap_content"
+        android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/contacto_form_apellido"
+        app:layout_constraintBottom_toTopOf="@+id/campo_email"
+        app:layout_constraintEnd_toStartOf="@+id/valor_apellido"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_nombre" />
 
     <TextView
         android:id="@+id/valor_apellido"
@@ -45,27 +53,34 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/valor_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_apellido" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/campo_apellido"
+        app:layout_constraintTop_toBottomOf="@+id/valor_nombre" />
 
     <TextView
         android:id="@+id/campo_email"
-        android:layout_width="wrap_content"
+        android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/contacto_form_email"
+        app:layout_constraintEnd_toStartOf="@+id/valor_email"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor_apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_apellido" />
 
     <TextView
         android:id="@+id/campo_id"
-        android:layout_width="wrap_content"
+        android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/contacto_form_id"
+        app:layout_constraintBottom_toTopOf="@+id/campo_nombre"
+        app:layout_constraintEnd_toStartOf="@+id/valor_id"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,8 +92,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_email" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/campo_email"
+        app:layout_constraintTop_toBottomOf="@+id/valor_apellido" />
 
     <TextView
         android:id="@+id/valor_id"
@@ -87,7 +103,32 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/valor_nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/campo_id"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#32CD32"
+        android:text="@string/btn_edit"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_id" />
+        app:layout_constraintTop_toBottomOf="@+id/valor_email" />
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#FF0000"
+        android:text="@string/btn_del"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/btnEdit"
+        tools:layout_editor_absoluteX="44dp" />
 </android.support.constraint.ConstraintLayout>
